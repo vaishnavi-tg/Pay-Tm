@@ -1,6 +1,8 @@
 import {Router} from "express"
+import { userRouter } from "./user"
 
 const rootRouter = Router()
 
-export {rootRouter}
+app.use("/user",userRouter)
 
+export {rootRouter}
