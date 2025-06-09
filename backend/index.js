@@ -1,6 +1,7 @@
 import app from "./app.js"
 import {config} from "dotenv"
 import { dbConnect } from "./db/index.js"
+import { rootRouter } from "./routes/index.js"
 
 config()
 
@@ -13,3 +14,4 @@ try {
     console.log(error)
 }
 
+app.use("/api/v1",rootRouter)
