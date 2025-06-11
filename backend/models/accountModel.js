@@ -2,7 +2,7 @@ import {mongoose} from "mongoose"
 import {User} from "./userModel.js"
 
 
-const accountSchema = new mongoose.schema({
+const accountSchema = mongoose.Schema({
     userId:{
         type:mongoose.Schema.Types.ObjectId,
         ref:User,

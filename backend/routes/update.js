@@ -1,7 +1,7 @@
 import { Router } from "express"
 import zod from "zod"
-import { authMiddelware } from "../middleware"
-import {User} from "./models/userModel.js"
+import { authMiddleware } from "../middleware.js"
+import {User} from "../models/userModel.js"
 
 const updateRouter = Router()
 
@@ -11,7 +11,7 @@ const updateBody = zod.object({
     lastname: zod.string().optional()
 })
 
-updateRouter.post("/",authMiddelware,async(req,res)=>{
+updateRouter.post("/",authMiddleware,async(req,res)=>{
     const {success} = updateBody.safeParse(req.body)
 
     if(!success){

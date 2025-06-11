@@ -1,10 +1,10 @@
 import {Router} from "express"
-import { userRouter } from "./user.js"
-import { accountRouter } from "./account.js"
+import { userRouter } from "./userMain.js"
+import { accountRouter } from "./accountMain.js"
 
 const rootRouter = Router()
 
-app.use("/user",userRouter)
-app.use("/account",accountRouter)
+rootRouter.use("/user",userRouter)
+rootRouter.use("/account",accountRouter)
 
 export {rootRouter}

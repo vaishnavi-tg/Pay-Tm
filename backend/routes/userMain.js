@@ -1,8 +1,8 @@
 import { Router } from "express"
-import { signupRouter } from "./signup"
-import { signinRouter } from "./signin"
-import { updateRouter } from "./update"
-import { getUsersRouter } from "./getUsers"
+import { signupRouter } from "./signup.js"
+import { signinRouter } from "./signin.js"
+import { updateRouter } from "./update.js"
+import { getUsersRouter } from "./getUsers.js"
 
 
 const userRouter = Router()

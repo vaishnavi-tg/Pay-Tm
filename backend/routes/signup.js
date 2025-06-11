@@ -1,9 +1,9 @@
 import {Router} from "express"
 import zod from "zod"
-import {User} from "../db/index"
-import JWT_SECRET from "./config"
+import {User} from "../models/userModel.js"
+import {JWT_SECRET} from "../config.js"
 import jwt from "jsonwebtoken"
-import { Account } from "../models/accountModel"
+import { Account } from "../models/accountModel.js"
 
 const signupRouter = Router()
 
@@ -14,7 +14,7 @@ const signupSchema = zod.object({
     password :zod.string()
 })
 
-Router.post("/signup",async (req,res)=>{
+signupRouter.post("/signup",async (req,res)=>{
     const body = req.body
     const {success} = signupSchema.safeParse(req.body)
     if(!success){

@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { authMiddleware } from "../middleware";
+import { authMiddleware } from "../middleware.js";
 
 const balanceRouter =Router()
 
