@@ -3,9 +3,9 @@ import zod from "zod"
 import {User} from "../db/index"
 import JWT_SECRET from "./config"
 import jwt from "jsonwebtoken"
+import { Account } from "../models/accountModel"
 
 const signupRouter = Router()
-
 
 const signupSchema = zod.object({
     username : zod.string().email(),
@@ -32,7 +32,14 @@ Router.post("/signup",async (req,res)=>{
             msg : "Email already taken / Incorrect inputs"
         })
     }
+
+    await Account.create({
+        userId,
+        balance:1+Math.random()*10000
+    })
+
     const dbUser = await User.create(body)
+
     const token = jwt.sign({
         userId: dbUser._id
     },JWT_SECRET)

@@ -1,9 +1,9 @@
 import { Router } from "express";
-import { authMiddelware } from "../middleware";
+import { authMiddleware } from "../middleware";
 
 const balanceRouter =Router()
 
-balanceRouter.get("/balance",authMiddelware, async(req,res)=>{
+balanceRouter.get("/balance",authMiddleware, async(req,res)=>{
     const account = await User.findOne({
         userId:req.userId
     })
