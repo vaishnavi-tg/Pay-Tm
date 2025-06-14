@@ -4,7 +4,7 @@ import {transferRouter} from "./transfer.js"
 
 const accountRouter = Router()
 
-accountRouter.use("/balance",balanceRouter)
-accountRouter.use("/transfer",transferRouter)
+accountRouter.use("/",balanceRouter)
+accountRouter.use("/",transferRouter)
 
 export {accountRouter}

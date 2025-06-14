@@ -3,7 +3,7 @@ import {User} from "./userModel.js"
 
 
 const accountSchema = mongoose.Schema({
-    userId:{
+    UserId:{
         type:mongoose.Schema.Types.ObjectId,
         ref:User,
         required:true
