@@ -1,6 +1,6 @@
 import { Account } from "../models/accountModel.js"
 import express from "express"
-import { authMiddleware } from "../middleware";
+import { authMiddleware } from "../middleware.js";
 import mongoose from "mongoose"
 
 const balance =  async (req, res) => {
