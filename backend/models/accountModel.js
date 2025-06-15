@@ -1,3 +1,5 @@
+import { User } from "./userModel.js"
+
 import mongoose from "mongoose"
 const accountSchema = mongoose.Schema({
     userId: {

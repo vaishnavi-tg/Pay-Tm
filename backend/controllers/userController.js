@@ -1,5 +1,10 @@
 import zod from "zod"
-import { User } from "../models/userModel"
+import { User } from "../models/userModel.js"
+import { Account } from "../models/accountModel.js"
+import { authMiddleware } from "../middleware.js"
+import jwt from "jsonwebtoken"
+import { JWT_SECRET } from "../config.js"
+
 
 const signupSchema = zod.object({
     username: zod.string().email(),
@@ -10,11 +15,9 @@ const signupSchema = zod.object({
 const signup = async (req, res) => {
 
     const body = req.body
-    const { success } = signupSchema.safeParse(req.body)
+    const { success } = signupSchema.safeParse(body)
     if (!success) {
-        return res.json({
-            msg: "Email already taken / Incorrect inputs"
-        })
+        return res.status(400).json({ msg: "Invalid input format" });
     }
 
     const user = await User.findOne({
@@ -31,16 +34,18 @@ const signup = async (req, res) => {
 
     await Account.create({
         userId: dbUser._id,
-        balance: 1 + Math.random() * 10000
+        balance: parseFloat((1 + Math.random() * 10000).toFixed(2))
+
     })
 
     const token = jwt.sign({
-        userId: dbUser._id
+        username: dbUser._id
     }, JWT_SECRET)
     res.json({
         msg: "User created successfully",
         token: token
     })
+
 }
 
 const signinSchema = zod.object({
@@ -123,7 +128,5 @@ const getUsers = async (req, res) => {
         res.status(500).json({ error: "Server error" });
     }
 }
-
-
 
 export { signup, signin, updateUser, getUsers }

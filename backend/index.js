@@ -2,10 +2,8 @@ import app from "./app.js"
 import { config } from "dotenv"
 import dbConnect from "./db/index.js"
 
-config()
 
-app.use(cors())
-app.use(express.json())
+config()
 
 try {
     app.listen(process.env.PORT, () => {
