@@ -6,6 +6,6 @@ const router = Router()
 
 router.get("/balance", authMiddleware, balance)
 
-// router.post("/transfer", transfer)
+router.post("/transfer", transfer)
 
 export default router
