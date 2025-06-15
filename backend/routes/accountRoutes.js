@@ -1,9 +1,10 @@
 import { Router } from "express";
-import { balanceRouter} from "../controllers/accountController.js";
+import { balance } from "../controllers/accountController.js";
+import { authMiddleware } from "../middleware.js";
 
 const router = Router()
 
-balanceRouter.get("/", balanceRouter)
+router.get("/balance", authMiddleware, balance)
 
 // router.post("/transfer", transfer)
 
