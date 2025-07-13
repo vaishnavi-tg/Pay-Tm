@@ -1,6 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { SignIn } from './pages/SignIn'
-import { SignUp } from './pages/SignUp'
+import { SignIn } from './pages/SignIn.jsx'
+import { SignUp } from './pages/SignUp.jsx'
+import { DashBoard } from './pages/DashBoard.jsx'
+import { SendMoney } from './pages/SendMoney.jsx'
 
 function App() {
     return (
